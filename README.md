@@ -1,79 +1,18 @@
 # Fôlego Financeiro
 
-Controle financeiro pessoal online com sincronização em tempo real.
+Controle financeiro pessoal: fôlego diário, contas a pagar e a receber, recorrências, parcelas, cartão, análise e backup. Login e dados sincronizados via Supabase; hospedado no Vercel.
 
-**Status:** ✅ Pronto para deploy
+## Estrutura
+- `App.jsx` — login (Supabase Auth) e carregamento do app
+- `FolegoApp.jsx` — o app (salva tudo em `dados_financeiros`, um JSON por usuário)
+- `api/mcp/[secret].js` — conector MCP para o Claude ler e editar os dados (`/api/mcp/<chave-secreta>`)
+- `sql/` — tabelas e funções do Supabase (rodar no SQL Editor)
 
-## 🚀 Quick Start
+## Variáveis no Vercel
+`VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (chave pública). Nenhum segredo fica no código: a chave do conector só existe no link e o banco guarda apenas o hash dela.
 
-### Desenvolvimento Local
-
-```bash
+## Desenvolvimento
+```
 npm install
 npm run dev
 ```
-
-Abre em `http://localhost:3000`
-
-### Deploy (3 passos)
-
-Ver [`DEPLOY.md`](./DEPLOY.md) para instruções de deploy no Vercel.
-
-## 📋 Requisitos
-
-- Node.js 16+
-- npm ou yarn
-- Conta no GitHub
-- Conta no Vercel (grátis)
-- Projeto Supabase criado
-
-## 🔧 Setup
-
-1. **SQL Schema:** Cole o conteúdo de `schema.sql` no SQL Editor do Supabase
-2. **Variáveis de Ambiente:** Crie `.env.local` com suas credenciais Supabase
-3. **Instale dependências:** `npm install`
-4. **Rode localmente:** `npm run dev`
-
-## 📁 Estrutura
-
-```
-├── App.jsx          # App principal com Supabase integration
-├── main.jsx         # Entry point React
-├── index.html       # HTML base
-├── package.json     # Dependências
-├── vite.config.js   # Configuração Vite
-├── schema.sql       # Schema Supabase
-├── DEPLOY.md        # Instruções de deploy
-└── .env.example     # Template de variáveis
-```
-
-## 🔑 Variáveis de Ambiente
-
-```
-VITE_SUPABASE_URL=https://seu-projeto.supabase.co
-VITE_SUPABASE_ANON_KEY=sua-chave-anonima
-```
-
-## 📱 Features
-
-- ✅ Login com Supabase Auth
-- ✅ Fôlego financeiro (quanto você pode gastar/dia)
-- ✅ Contas a pagar e receber
-- ✅ Investimentos e dinheiro guardado
-- ✅ Sincronização em tempo real
-- ✅ Mobile-friendly
-
-## 🛠️ Tech Stack
-
-- **Frontend:** React + Vite
-- **Backend:** Supabase (PostgreSQL)
-- **UI:** Recharts + Lucide icons
-- **Deployment:** Vercel
-
-## 📞 Suporte
-
-Ver `DEPLOY.md` para troubleshooting comum.
-
----
-
-Made with ❤️ by Charles Rocha
